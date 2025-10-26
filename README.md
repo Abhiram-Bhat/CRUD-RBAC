@@ -1,346 +1,164 @@
-# CRUD + RBAC Platform
+# CRUD + RBAC Platform: Your Next Low-Code Backend Starte
 
-A comprehensive low-code platform that allows users to define data models from a web UI and automatically generates CRUD APIs, admin interfaces, and enforces role-based access control (RBAC).
+##  Features—The Core Magic
 
-## Features
+  * **Design Your Models:** Use the form-based editor to define fields, types, and set the RBAC permissions for each role. No more digging into database files to define a table\!
+  * **File-Based Models:** Model definitions are saved as clear, readable **JSON files** (`/models/`), which is great for version control and persistence.
+  * **Dynamic CRUD APIs:** Once you hit "Publish," you instantly get fully functional REST endpoints for your new model. Fast, simple, and ready to go.
+  * **Instant Admin UI:** Get a generic interface with dynamic forms and tables right out of the box to manage your data immediately.
+  * **RBAC Built-in:** Configure who can do what with predefined roles like **Admin**, **Manager**, and **Viewer**.
+  * **Ownership Rules:** Need fine-grained control? Add an optional "owner" field to ensure users can only modify their own records.
 
-- **Model Definition**: Form-based model editor with fields, types, and RBAC configuration
-- **File-based Persistence**: Model definitions are saved as JSON files for versioning and persistence
-- **Dynamic CRUD APIs**: Automatically generated REST endpoints for each published model
-- **Admin Interface**: Generic UI for managing model data with dynamic forms and tables
-- **Role-Based Access Control**: Configurable permissions per role (Admin, Manager, Viewer)
-- **Ownership Rules**: Optional owner field for fine-grained access control
+-----
 
-## Tech Stack
+## 🛠️ The Modern Tech Stack
 
-- **Frontend**: Next.js 15 with TypeScript, Tailwind CSS, and shadcn/ui components
-- **Backend**: Next.js API routes with TypeScript
-- **Database**: SQLite with Prisma ORM
-- **Authentication**: Ready for NextAuth.js integration
-- **State Management**: Zustand and TanStack Query ready
-- **UI Components**: Complete shadcn/ui component set with Lucide icons
+We're using a blazing-fast, modern stack that's easy to develop with:
 
-## Getting Started
+  * **Frontend:** **Next.js 15** (App Router) + **TypeScript**, styled beautifully with **Tailwind CSS** and ready-made components from **shadcn/ui**.
+  * **Backend:** **Next.js API routes** (because why use two servers?) and **TypeScript**.
+  * **Database:** **SQLite** for simplicity in development, managed by the excellent **Prisma ORM**.
+  * **Authentication:** Set up to integrate easily with **NextAuth.js**.
+  * **State Management:** Ready for **Zustand** and **TanStack Query** right out of the box.
 
-### Prerequisites
+-----
 
-- Node.js 18+ installed
-- npm or yarn package manager
+##  Getting Started (Five Minutes to Launch\!)
+
+You'll need Node.js (v18+) and npm/yarn installed.
 
 ### Installation
 
-1. Clone the repository:
-```bash
-git clone <repository-url>
-cd crud-rbac-platform
-```
+1.  **Grab the Code:**
 
-2. Install dependencies:
-```bash
-npm install
-```
+    ```bash
+    git clone <https://github.com/Abhiram-Bhat/CRUD-RBAC>
+    cd crud-rbac-platform
+    ```
 
-3. Set up the database:
-```bash
-npm run db:push
-```
+2.  **Install Dependencies:**
 
-4. Start the development server:
-```bash
-npm run dev
-```
+    ```bash
+    npm install
+    ```
 
-5. Open your browser and navigate to `http://localhost:3000`
+3.  **Database Setup:** This creates your local `dev.db` and pushes the initial schema.
 
-## How to Use
+    ```bash
+    npm run db:push
+    ```
 
-### 1. Define a Model
+4.  **Fire It Up\!**
 
-1. Click "Create Model" on the dashboard
-2. Fill in the basic information:
-   - **Model Name**: The name of your model (e.g., "Product", "Employee")
-   - **Table Name**: Optional database table name (defaults to lowercase plural)
-   - **Owner Field**: Optional field for ownership rules (e.g., "ownerId")
+    ```bash
+    npm run dev
+    ```
 
-3. Add fields to your model:
-   - **Field Name**: The name of the field
-   - **Type**: Choose from string, number, boolean, date, or text
-   - **Required**: Mark if the field is mandatory
-   - **Unique**: Mark if the field value must be unique
-   - **Default Value**: Optional default value for the field
+    Your platform should be running at `http://localhost:3000`.
 
-4. Configure RBAC permissions:
-   - **Admin**: Full permissions (create, read, update, delete)
-   - **Manager**: Limited permissions (create, read, update)
-   - **Viewer**: Read-only permissions
+-----
 
-5. Click "Save Model Definition" to save your model
+## 🗺️ How to Use the Platform
 
-### 2. Publish a Model
+The whole workflow is designed to be simple and visual:
 
-1. From the model list, click the settings icon on a draft model
-2. Click "Publish" to:
-   - Save the model definition to a JSON file in `/models/`
-   - Generate dynamic CRUD API endpoints
-   - Enable the admin interface for data management
+### 1\. Define Your Data Model
 
-### 3. Manage Model Data
+  * Go to the dashboard and click **"Create Model."**
+  * **Basic Info:** Give it a name (e.g., "Product"), an optional table name, and an optional **Owner Field** (like `ownerId`) if you need ownership logic.
+  * **Add Fields:** Define your fields (string, number, boolean, etc.) and mark them as `Required` or `Unique` as needed.
+  * **Set Permissions:** For each field, configure the permissions for **Admin**, **Manager**, and **Viewer** roles (e.g., a "Viewer" can only **read**).
+  * **Save** the definition.
 
-1. From the model list, click the users icon on a published model
-2. Use the admin interface to:
-   - **Create Records**: Fill in the dynamic form
-   - **View Records**: See all records in a table
-   - **Edit Records**: Modify existing records
-   - **Delete Records**: Remove records with confirmation
+### 2\. Publish It
 
-### 4. Use the CRUD APIs
+  * Find your model in the list and click the **settings icon** (usually a gear).
+  * Hit **"Publish."** This single action does three things:
+    1.  Saves the model definition as a JSON file.
+    2.  **Generates the dynamic CRUD API endpoints.**
+    3.  **Enables the data management UI.**
 
-Once a model is published, the following API endpoints are automatically available:
+### 3\. Manage Data (Admin UI)
 
-```
-POST   /api/crud/<modelName>     - Create a new record
-GET    /api/crud/<modelName>     - Get all records
-GET    /api/crud/<modelName>?id=<id>  - Get a specific record
-PUT    /api/crud/<modelName>?id=<id>  - Update a record
-DELETE /api/crud/<modelName>?id=<id>  - Delete a record
-```
+  * Click the **users icon** next to your published model.
+  * You'll be taken to the live admin interface where you can **Create**, **View**, **Edit**, and **Delete** records using the dynamically generated forms and tables.
 
-## API Examples
+### 4\. Hit the APIs\!
 
-### Create a Product
+The moment a model is published, you can start hitting the fully protected endpoints immediately.
 
-```bash
-curl -X POST http://localhost:3000/api/crud/product \
-  -H "Content-Type: application/json" \
-  -d '{
-    "name": "Laptop",
-    "price": 999.99,
-    "isActive": true
-  }'
-```
+| Method | Endpoint | Description |
+| :--- | :--- | :--- |
+| `POST` | `/api/crud/<modelName>` | Create a new record |
+| `GET` | `/api/crud/<modelName>` | Get all records |
+| `GET` | `/api/crud/<modelName>?id=<id>` | Get a specific record |
+| `PUT` | `/api/crud/<modelName>?id=<id>` | Update a record |
+| `DELETE` | `/api/crud/<modelName>?id=<id>` | Delete a record |
 
-### Get All Products
+-----
 
-```bash
-curl http://localhost:3000/api/crud/product
-```
+## 🔐 RBAC Explained
 
-### Get a Specific Product
-
-```bash
-curl "http://localhost:3000/api/crud/product?id=product-123"
-```
-
-### Update a Product
-
-```bash
-curl -X PUT "http://localhost:3000/api/crud/product?id=product-123" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "name": "Laptop Pro",
-    "price": 1299.99
-  }'
-```
-
-### Delete a Product
-
-```bash
-curl -X DELETE "http://localhost:3000/api/crud/product?id=product-123"
-```
-
-## File-based Model Persistence
-
-When a model is published, its definition is saved as a JSON file in the `/models/` directory. For example:
-
-### `/models/Product.json`
-```json
-{
-  "name": "Product",
-  "fields": [
-    {
-      "name": "name",
-      "type": "string",
-      "required": true
-    },
-    {
-      "name": "price",
-      "type": "number",
-      "required": true
-    },
-    {
-      "name": "isActive",
-      "type": "boolean",
-      "default": true
-    }
-  ],
-  "ownerField": "ownerId",
-  "rbac": {
-    "Admin": ["create", "read", "update", "delete"],
-    "Manager": ["create", "read", "update"],
-    "Viewer": ["read"]
-  },
-  "createdAt": "2024-01-01T00:00:00.000Z",
-  "updatedAt": "2024-01-01T00:00:00.000Z"
-}
-```
-
-## RBAC Implementation
+Access control is a top priority for this platform.
 
 ### Role-Based Permissions
 
-The system supports three default roles:
+We start with three standard roles, easily extensible:
 
-- **Admin**: Full access to all operations
-- **Manager**: Can create, read, and update records
-- **Viewer**: Can only read records
+  * **Admin:** Complete **full access** (create, read, update, delete).
+  * **Manager:** Can **create, read, and update** records.
+  * **Viewer:** **Read-only** access.
 
 ### Ownership Rules
 
-If an `ownerField` is specified in the model definition:
-- Users can only update/delete their own records
-- Admin users can update/delete any record
-- The ownership check is enforced at the API level
+If you set an `ownerField` (like `userId`):
 
-### Permission Checking
+  * A non-Admin user can **only** update or delete records where the `ownerField` matches their own ID.
+  * Admins, naturally, bypass this and can modify any record.
 
-The RBAC middleware automatically checks permissions before allowing operations:
-1. Load the model definition
-2. Check user role permissions
-3. For update/delete operations, check ownership if applicable
-4. Allow or deny the operation based on permissions
+The permission check happens automatically in the **RBAC middleware** before any database operation is allowed.
 
-## Project Structure
+-----
+
+## 📂 Project Structure Snapshot
+
+If you dive into the code, here's the lay of the land:
 
 ```
 src/
 ├── app/
-│   ├── api/
-│   │   ├── models/           # Model management APIs
-│   │   └── crud/             # Dynamic CRUD APIs
-│   ├── page.tsx             # Main dashboard
-│   └── layout.tsx           # App layout
-├── components/
-│   ├── ui/                  # shadcn/ui components
-│   ├── model-definition-form.tsx  # Model creation form
-│   ├── model-list.tsx       # Model list component
-│   └── model-data-admin.tsx # Data management interface
+│   ├── api/
+│   │   ├── crud/              # The heart of the dynamic API generation
+│   └── page.tsx               # Main dashboard component
+├── components/                # UI components, including the Model Form & Admin views
 └── lib/
-    ├── db.ts                # Database connection
-    ├── model-persistence.ts # File-based model storage
-    ├── rbac.ts             # RBAC middleware
-    └── utils.ts            # Utility functions
-models/                     # Published model definitions
+    ├── model-persistence.ts   # Logic for saving models to JSON
+    └── rbac.ts                # The RBAC permission checking logic
+models/                        # Where your published JSON models live
 prisma/
-└── schema.prisma          # Database schema
+└── schema.prisma              # Database schema definition
 ```
 
-## Database Schema
+-----
 
-The platform uses the following database tables:
+## 💻 Development & Extensibility
 
-- **User**: Stores user information with roles
-- **ModelDefinition**: Stores model definitions in the database
-- **Post**: Example table (can be removed)
+### Scripts to Know
 
-```sql
--- User table with role support
-CREATE TABLE User (
-  id        TEXT PRIMARY KEY,
-  email     TEXT UNIQUE,
-  name      TEXT,
-  role      TEXT DEFAULT 'VIEWER',
-  createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
-  updatedAt DATETIME DEFAULT CURRENT_TIMESTAMP
-);
+| Script | What it Does |
+| :--- | :--- |
+| `npm run dev` | Starts the dev server |
+| `npm run build` | Creates the production build |
+| `npm run db:push` | Pushes schema changes to the local SQLite DB |
+| `npm run db:generate` | Generates the Prisma client |
+| `npm test` | Runs Unit Tests |
 
--- Model definitions
-CREATE TABLE ModelDefinition (
-  id          TEXT PRIMARY KEY,
-  name        TEXT UNIQUE,
-  tableName   TEXT,
-  definition  TEXT, -- JSON string
-  isPublished BOOLEAN DEFAULT FALSE,
-  createdBy   TEXT,
-  createdAt   DATETIME DEFAULT CURRENT_TIMESTAMP,
-  updatedAt   DATETIME DEFAULT CURRENT_TIMESTAMP
-);
-```
+### Extending the Platform
 
-## Development
+This project is built to be a great starting point:
 
-### Available Scripts
-
-- `npm run dev`: Start development server
-- `npm run build`: Build for production
-- `npm run start`: Start production server
-- `npm run lint`: Run ESLint
-- `npm run db:push`: Push database schema changes
-- `npm run db:generate`: Generate Prisma client
-- `npm run db:migrate`: Run database migrations
-
-### Database Management
-
-The platform uses Prisma with SQLite for development. To make changes to the database schema:
-
-1. Edit `prisma/schema.prisma`
-2. Run `npm run db:push` to apply changes
-3. Run `npm run db:generate` to update the Prisma client
-
-### Adding New Features
-
-The platform is designed to be extensible:
-
-- **New Field Types**: Add to the `fieldTypes` array in the model form
-- **New Roles**: Extend the `Role` enum in the Prisma schema
-- **New Permissions**: Add to the `permissions` array in the model form
-- **Custom Validation**: Extend the Zod schemas in the form components
-
-## Testing
-
-The platform includes comprehensive testing capabilities:
-
-### Unit Tests
-
-```bash
-npm test
-```
-
-### Integration Tests
-
-```bash
-npm run test:integration
-```
-
-### End-to-End Tests
-
-```bash
-npm run test:e2e
-```
-
-## Deployment
-
-### Production Build
-
-```bash
-npm run build
-npm run start
-```
-
-### Environment Variables
-
-Create a `.env` file with the following variables:
-
-```env
-DATABASE_URL="file:./dev.db"
-NEXTAUTH_SECRET="your-secret-here"
-NEXTAUTH_URL="http://localhost:3000"
-```
-
-## Security Considerations
-
-- **Authentication**: The platform is ready for NextAuth.js integration
-- **Authorization**: RBAC middleware enforces permissions at the API level
-- **Input Validation**: Zod schemas validate all form inputs
-- **SQL Injection**: Prisma ORM provides protection against SQL injection
-- **XSS Protection**: Next.js provides built-in XSS protection
-
+  * **New Field Types?** Just add to the `fieldTypes` array in the model form.
+  * **Need more roles?** Extend the `Role` enum in your Prisma schema.
+  * **Custom Validation?** The form components use **Zod** schemas, making custom validation a snap\!
+This project is done by Abhiram T A
+contact-abhiramta267@gmail.com
