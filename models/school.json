@@ -1,0 +1,32 @@
+{
+  "name": "school",
+  "tableName": "students",
+  "fields": [
+    {
+      "name": "name",
+      "type": "string",
+      "required": false,
+      "unique": true,
+      "default": "null"
+    }
+  ],
+  "ownerField": "",
+  "rbac": {
+    "Admin": [
+      "create",
+      "read",
+      "update",
+      "delete"
+    ],
+    "Manager": [
+      "create",
+      "read",
+      "update"
+    ],
+    "Viewer": [
+      "read"
+    ]
+  },
+  "createdAt": "2025-10-25T13:48:25.501Z",
+  "updatedAt": "2025-10-25T13:48:25.501Z"
+}
